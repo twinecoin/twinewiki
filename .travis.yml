@@ -1,0 +1,15 @@
+script:
+  - git config user.name Tiers-Nolan-Wikibot
+  - git config user.email tier.nolan@twinecoin.org
+  - git remote remove origin
+  - git remote add origin https://$GITHUB_API_KEY@github.com/twinecoin/twinewiki.git > /dev/null 2>&1
+  - git remote add upstream https://$GITHUB_API_KEY@github.com/twinecoin/twinewiki.git > /dev/null 2>&1
+  - git fetch origin
+  - git fetch upstream
+  - git merge upstream/master --no-edit
+  - git push origin master > /dev/null 2>&1
+  - git push upstream master > /dev/null 2>&1
+env:
+  global:
+    secure: wWXOK8MMSApvIixtzMVBHoeEE9cKnkj2w/M+OQVjgMSPpvlfok2Mxwtxh+P12XGxF+D9e9Ov0y8wonv6xI5hHtConNcmTbdKnMyPrITKrh0U5K48EIcoeGPk+fVndKYcBkKV+OELeacHI2bdmOV31ebjL3pv6G0FT18ERuRctoaebVQuDlOjLWTeFVS+UJxnoNIepm9NStJZN0A5jiPIiOmZiXSPK5qarOKdMJtpf6yVSpugtBdMNwJmFUFWAoHYLFuHAT7w6typ/y3CE7eaxMpPdZ/EK/UfV4+olKHV4GjV8Jtlle7Kap+x+rYN39i+2gvJy+RE4m5mhlg/J5iUeHuLJjH7EB5hmEoJ3gea+yiEXf6x54fIHm2ymWMq5M+k3cNUwGmoOs0FaIW3MJA8fs0oeitzhZI+GIWngyZuwBu/Z+jCypG4KW/xnhJkJYupz1KOz3MXg7v95q7Ibf1SPYj84O98fsJu57xaTTJjTGiddAVJnStWw4dZy6w1vRoPc68FFIykMiEEVRjt60zYttSchc9eKqgbzdwzsU47g6ZhdtKXf2223n8DR5hUc79dGygaJCWu6g6ZXTnxJzVjurmYVYhuGXSTZtJ+CSNhH4dQz2NE4aRKqxi3lmjV8SVGd4iFiWJzVhd6mL4g6p/eOhrjVttnPpMvKNELVGr6I/g=
+
