@@ -7,7 +7,7 @@ script:
   - git fetch origin
   - git fetch upstream
   - git merge upstream/master --no-edit
-  - git push origin HEAD:master > /dev/null 2>&1
-  - git push upstream HEAD:master > /dev/null 2>&1
+  - git push origin master > /dev/null 2>&1
+  - git push upstream master > /dev/null 2>&1
 dd:
   secure: cFw0g3nnPbEbeO4FL4hnl88uX9O7eF5utVwt5sQ/XUJFCPKJpxM+osB63+AmBlx1lgNMlcMA51Ktr7az5IeR+AdtBmW/hjj1AbXwU583XHHvUw4Y01B8XQGwabTbRPZfbIq0up0STC8zsnFFbSrvkeMhsSPphg8q176j6IcGTjzRzV2OUjct1abgZeXEtmTXcXV5lbOS3lRskOSWop+hzIxxPhlMdGkwb6c5V6Kh8uIUFroDHpNc85bJEXb58q8L0WTZwGAumHypA6KxgoziyLai5XBcY6ib8H8kcXhqk8TcQ73LEM5tLHAFxJjjmKQFjXoty+Y9uzDJqXTiPzSsOrPx5f4yatQiyB3EKYDiCdbpWrwKtmLCHwPlycycZ4spcl0GWmj4H5hznrUzy2+VtLQ/tgZljkbDeo2IMyWQBMj89FR+arWEWBvZ3TpWrfoRHsvzDf/Hod5QxJuz/63Pr3aMbJH76mWLRH5EWnRqC8fkEJtq4qjYNjmQPHKeD5728s6F3QXjCbx6azaDxZCuLarco8d33eKck67gN/qv12KTK9HxEQQrM6YN42pIuIUx/AZuCcDppAE+D8ajT2MdUL1gwWKJLvdBJJfH53Z4M7zwP7pNn0KArfVR5FhreSacHQLsfvQX4Aam1vp4+/UkDnTb7ljN/AzqDNHwJ8Qf2EU=
