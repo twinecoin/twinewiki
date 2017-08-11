@@ -1,5 +1,5 @@
 script:
-  - git config user.name Tiers-Nolan-Wikibot
+  - git config user.name Tier-Nolan-Wikibot
   - git config user.email tier.nolan@twinecoin.org
   - git remote remove origin
   - git remote add origin https://$GITHUB_API_KEY@github.com/twinecoin/twinewiki.git > /dev/null 2>&1
