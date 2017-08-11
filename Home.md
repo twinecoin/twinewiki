@@ -20,4 +20,3 @@ The target for the first release is for software that can handle mining and pers
 * Blocks processing in chunks
 * Extensible design – formal soft fork system
 * Compatible with Bitcoin mining hardware
-* ASICBoost resistant
