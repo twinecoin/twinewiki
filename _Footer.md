@@ -1,4 +1,4 @@
-### Contibuting
+### Contributing
 
 This wiki accepts pull requests.  
 
