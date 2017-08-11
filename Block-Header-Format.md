@@ -76,7 +76,7 @@ The virtual header is defined to have the following format.
     <tr>
     <th style="border-bottom: 1px solid #000; vertical-align:middle;" rowspan="4">1</th>
         <th>0</th>
-        <th>7E00007E</th>
+        <th>merkle[28:31]</th>
         <th>55555555</th>
         <th>AAAAAAAA</th>
         <th>55555555</th>
@@ -86,7 +86,7 @@ The virtual header is defined to have the following format.
         <th>AAAAAAAA</th>
         <th>55555555</th>
         <th>AAAAAAAA</th>
-        <th>merkle[28:31]</th>
+        <th>55555555</th>
     </tr>
     <tr>
         <th>32</th>
@@ -101,9 +101,9 @@ The virtual header is defined to have the following format.
         <th>2</th>
         <th>64</th>
         <th>merkle[28:31]</th>
-        <th>nonce[0]|merkle[0:1]|nonce[1]</th>
-        <th>merkle[2:3]|nonce[2:3]</th>
-        <th>nonce[4:7]</th>
+        <th>nonce[4]|merkle[1:3]</th>
+        <th>merkle[4:7]</th>
+        <th>nonce[0:3]</th>
     </tr>
 </table>
 
@@ -112,15 +112,7 @@ The fields in the virtual header are gives in the following table.
 |Field|Comment|
 |-|-|
 |merkle|Computed from virtual coinbase transaction|
-|nonce|8 bytes that can be set to anything<br>It consumes two bytes of the timestamp and difficulty field
-
-### Note on ASICBoost
-
-The ASICBoost optimization works by generating multiple chunk 1 headers that match the same chunk 2 header.  By including 8 bytes of the merkle root in chunk 2, it greatly reduces the chances of finding a match.
-
-If two distinct coinbases generate the same chunk 1 result, then the SHA256 hash function is broken.
-
-Each coinbase that is tested will generate a psuedo-random value for the merkle[0:7] byte string.  This means that the odds of two coinbases having a match is one in 2<sup>64</sup> attempts.
+|nonce|5 bytes that can be set to anything|The LSB of the timestamp field is included|
 
 ## Virtual Coinbase
 
@@ -135,7 +127,7 @@ The virtual coinbase is a valid coinbase that takes the hash of the twine header
         <th style="min-width:100px">12</th>
     <tr>
         <th>0</th>
-        <th>10000000</th>
+        <th>01000000</th>
         <th>01|000000</th>
         <th>00000000</th>
         <th>00000000</th>
@@ -151,8 +143,8 @@ The virtual coinbase is a valid coinbase that takes the hash of the twine header
         <th>32</th>
         <th>00000000</th>
         <th>00|FFFFFF</th>
-        <th>FF|24|twine_root[0:1]</th>
-        <th>twine_root[2:5]</th>
+        <th>FF|23|twine_hash[0:1]</th>
+        <th>twine_hash[2:5]</th>
     </tr>
     <tr>
         <th>48</th>
@@ -160,23 +152,32 @@ The virtual coinbase is a valid coinbase that takes the hash of the twine header
     </tr>
     <tr>
         <th>64</th>
-        <th colspan="2">twine[22:29]</th>
-        <th>twine_root[30:31]|0000</th>
-        <th>0000|0100</th>
+        <th colspan="2">twine_hash[22:29]</th>
+        <th>twine_hash[30:31]|nonce2[0:1]</th>
+        <th>nonce[2]|000000</th>
     </tr>
     <tr>
         <th>80</th>
+        <th>00|01|0000</th>
         <th>00000000</th>
+        <th>0000|016a</th>
         <th>00000000</th>
-        <th>00000001</th>
-        <th>6a000000</th>
-    </tr>
-    <tr>
-        <th>96</th>
-        <th>00|</th>
     </tr>
 </table>
 
 The merkle root for the virtual header should be calculated using this coinbase.  
 
-The coinbase spends zero to OP_RETURN.  The scriptSig contains the twine_root and 4 bytes for extra nonce.
+The coinbase spends zero to OP_RETURN.  The scriptSig contains the twine_root and 3 bytes for extra nonce.
+
+The length of the coinbase is 96 bytes which will fit in 2 rounds of SHA256.
+
+The coinbase can be constructed from the following table.
+
+|Field|Hex|
+|-|-|
+|Prefix|01000000010000000000000000000000000000000000000000000000000000000000000000FFFFFFFF23
+|Hash|32-byte Twine Header Hash|
+|Nonce2|3-byte Auxilary Nonce|
+|Suffix|00000000010000000000000000016a00000000|
+
+
