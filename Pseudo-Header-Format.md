@@ -2,7 +2,7 @@
 
 The Twinecoin block header maintains compatibility with Bitcoin mining hardware by use of a pseudo-header.
 
-The Bitcoin header is described [Bitcoin-Header](here).
+The Bitcoin header is described [here](https://github.com/twinecoin/twinewiki/wiki/Bitcoin-Header).
 
 ## Pseudo-Header
 
