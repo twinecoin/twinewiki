@@ -1,5 +1,5 @@
 # Proof of Work Calculation
-This page concisely describes the proof of work calculation for Twinecoin.
+This page describes the proof of work calculation for Twinecoin.
 
 ## Inputs
 
@@ -40,7 +40,7 @@ The pseudo-block header is built up by concatenating the fields in this table.
 |Field|Hex|
 |-|-|
 |Merkle MSW|merkle[28:31]
-|Fake Previous|55555555AAAAAAAA55555555AAAAAAAA55555555AAAAAAAA5555555500000000
+|Fake Previous|55555555AAAAAAAA55555555AAAAAAAA<br>55555555AAAAAAAA5555555500000000
 |Full Merkle|merkle[0:31]|
 |Header Nonce Last Byte|nonce[4]|
 |Merkle Start|merkle[1:7]
