@@ -1,5 +1,5 @@
 # Proof of Work Calculation
-This page concisely describes the proof of work calculation for Twinecoin.
+This page describes the proof of work calculation for Twinecoin.
 
 ## Inputs
 
