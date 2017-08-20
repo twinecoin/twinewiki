@@ -52,7 +52,7 @@ A header is defined as valid once the POW header is received and validated.  If 
      hash256 DSHA256(block_header)
 **<center>Inferred Header</center>**
 
-The inferred header is hashed in parts to keep the header chains for chain tip proofs shorter.
+The inferred header is hashed in parts to keep the chain tip proof header chains shorter.
 
      uint32 height
      hash256 previous_4096
