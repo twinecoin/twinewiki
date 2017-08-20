@@ -39,7 +39,7 @@ A header is defined as valid once the POW header is received and validated.  If 
      uint32 height
      hash256 previous_4096
      hash256 previous_256
-     hash256 previous_subchain
+     hash256 previous_subchain_main_child
      uint32 median_time_past
      h256 total_work
      uint32[] previous_10_timestamps
