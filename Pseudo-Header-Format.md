@@ -44,7 +44,7 @@ The pseudo-header is defined to have the following format.
         <th>2</th>
         <th>64</th>
         <th>merkle[28:31]</th>
-        <th>nonce[4]|merkle[1:3]</th>
+        <th>nonce[4:5]|merkle[2:3]</th>
         <th>merkle[4:7]</th>
         <th>nonce[0:3]</th>
     </tr>
@@ -55,7 +55,7 @@ The variable fields in the pseudo-header are gives in the following table.
 |Field|Comment|
 |-|-|
 |merkle|Computed from virtual coinbase transaction|
-|nonce|5 bytes that can be set to anything|The LSB of the timestamp field is included to allow time rolling|
+|nonce|6 bytes that can be set to anything|The 2 LSBs of the timestamp field is included to allow time rolling|
 
 ## Pseudo-Coinbase
 
